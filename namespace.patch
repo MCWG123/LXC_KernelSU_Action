@@ -1,5 +1,5 @@
---- a/fs/namespace.c
-+++ b/fs/namespace.c
+--- fs/namespace.c
++++ fs/namespace.c
 @@ -1644,7 +1644,39 @@ static inline bool may_mandlock(void)
  	return false;
  }
