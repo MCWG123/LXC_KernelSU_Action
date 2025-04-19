@@ -275,7 +275,6 @@ jobs:
         echo 'source "utils/Kconfig"' >> "Kconfig"
         wget "https://raw.githubusercontent.com/MCWG123/LXC_KernelSU_Action/refs/heads/main/namespace.patch" -O $GITHUB_WORKSPACE/kernel_workspace/android-kernel/namespace.patch
         echo "CONFIG_DOCKER=y" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}
-        patch -p0 < $GITHUB_WORKSPACE/kernel_workspace/android-kernel/namespace.patch
         sed -i '/CONFIG_ANDROID_PARANOID_NETWORK/d' arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}
         echo "# CONFIG_ANDROID_PARANOID_NETWORK is not set" >> arch/${{ env.ARCH }}/configs/${{ env.KERNEL_CONFIG }}
           
@@ -293,6 +292,7 @@ jobs:
 
         if [ -f $GITHUB_WORKSPACE/kernel_workspace/android-kernel/net/netfilter/xt_qtaguid.c ]; then
             patch -p0 < $GITHUB_WORKSPACE/kernel_workspace/android-kernel/utils/xt_qtaguid.patch
+            patch -p0 < $GITHUB_WORKSPACE/kernel_workspace/android-kernel/namespace.patch
         fi
        
     - name: Setup ccache
