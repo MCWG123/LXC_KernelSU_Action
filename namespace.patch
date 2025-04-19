@@ -1,7 +1,7 @@
 diff --git a/fs/namespace.c b/fs/namespace.c
 index edfe4ef..f136075 100644
---- a/a.namespace.c
-+++ b/b.namespace.c
+--- a/fs/namespace.c
++++ b/fs/namespace.c
 @@ -1644,7 +1644,39 @@ static inline bool may_mandlock(void)
  	return false;
  }
